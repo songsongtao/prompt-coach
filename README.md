@@ -8,10 +8,10 @@ Turn a rough coding request into a clear, actionable prompt in **Pi** and **Oh M
 
 ```bash
 # Pi
-pi install npm:prompt-coach
+pi install npm:@sonsong/prompt-coach
 
 # OMP
-omp plugin install prompt-coach
+omp plugin install @sonsong/prompt-coach
 ```
 
 Restart the host, or reload its extensions if supported. Tested with **Pi 0.87.0** and **OMP 18.4.2**. Both hosts load the same JavaScript extension and shared coaching rules. No separate model account or API key is required: coaching uses the host's existing model and context.

@@ -8,10 +8,10 @@
 
 ```bash
 # Pi
-pi install npm:prompt-coach
+pi install npm:@sonsong/prompt-coach
 
 # OMP
-omp plugin install prompt-coach
+omp plugin install @sonsong/prompt-coach
 ```
 
 重启宿主，或使用宿主支持的扩展重载功能。验证版本为 **Pi 0.87.0** 和 **OMP 18.4.2**。两个宿主共用一个 JavaScript 扩展和一份引导规则。引导复用宿主已有模型和上下文，无须单独配置模型账号或 API Key。

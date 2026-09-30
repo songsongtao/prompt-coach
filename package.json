@@ -1,10 +1,11 @@
 {
-  "name": "prompt-coach",
+  "name": "@sonsong/prompt-coach",
   "version": "0.1.0",
   "description": "Turn rough coding requests into clear prompts in Pi and OMP, with read-only coaching and explicit execution approval.",
   "type": "module",
   "author": "songsongtao",
   "license": "MIT",
+  "publishConfig": { "access": "public" },
   "repository": {
     "type": "git",
     "url": "https://github.com/songsongtao/prompt-coach.git"
