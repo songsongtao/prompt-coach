@@ -30,9 +30,9 @@ For example, a vague debugging request becomes a prompt with the reproduction st
 
 ## Why it matters
 
-A coding agent can only act on what the current context makes clear. When a request is vague, the model has to guess the goal, the relevant evidence, the allowed scope, and what counts as finished. Those guesses lead to repeated questions, wrong files, broad changes, and results that are difficult to verify.
+A coding agent acts on the context it receives. If the goal, evidence, scope, or completion criteria are vague, it has to guess, which can lead to repeated questions, wrong files, broad changes, and hard-to-check results.
 
-`prompt-coach` turns that rough request into a compact handoff before any task starts. It makes the target, evidence, constraints, and finish line visible; keeps useful failed attempts; exposes unknowns before they become assumptions; and lets you approve the exact prompt that will be submitted. The coaching phase stays read-only, so improving the prompt cannot change project files. This is especially useful for debugging, implementation, review, and design tasks that carry several constraints across a conversation. Simple, complete requests remain short.
+`prompt-coach` turns a rough request into a reviewed handoff: it keeps relevant context and failed attempts, exposes unknowns, makes constraints and acceptance criteria explicit, and lets you approve the exact prompt before execution. Coaching stays read-only. It helps most with debugging, implementation, review, and design tasks that carry several constraints; complete simple requests remain short.
 
 | Command | Behavior |
 | --- | --- |
@@ -42,17 +42,17 @@ A coding agent can only act on what the current context makes clear. When a requ
 
 Questions, improvement notes, and the review dialog follow the user's language: English or Simplified Chinese, with English as the fallback. Ask “continue in Chinese” or “请切换到英文” to switch. You can also request a specific language for the final prompt.
 
-## Principles from `提示词工程.md`
+## How the coach improves a prompt
 
-The shared coaching rules turn the five principles in the project notes into a repeatable workflow:
+The coaching rules apply five practical principles:
 
 1. **Less but precise** — keep high-relevance context and useful failed attempts; remove repetition and unrelated noise.
-2. **Put priorities where they are easy to find** — organize the prompt as context, evidence, task, constraints, and output, then keep the most important limits close to the task and finish line.
+2. **Put priorities where they are easy to find** — organize the prompt as context, evidence, task, constraints, and output. Long background can bury a restriction as if it were ordinary information; placing key limits beside the task and finish line makes them easier to carry into the plan and checks.
 3. **Facts before judgment** — separate confirmed facts, hypotheses, and missing evidence before suggesting a cause or solution.
 4. **Make requirements concrete** — replace vague requests such as “analyze carefully” with files, checks, examples, boundaries, and an expected result.
 5. **Define done** — state the scope, deliverables, and acceptance criteria so the task can finish without silently expanding.
 
-These practices apply the notes' model concepts in a usable form: relevant context guides attention, clear placement keeps priorities visible, facts shape a reliable working state, concrete examples reduce semantic ambiguity, and explicit constraints narrow the possible output. The coach asks only for missing information instead of forcing every request through a fixed template.
+Together they reduce noise, prevent unsupported assumptions, remove ambiguity, and narrow the expected output. The coach asks only for missing information instead of forcing every request through a fixed template.
 
 ## Review and execute
 
@@ -74,18 +74,6 @@ While coaching or awaiting review, the extension exposes only verified built-in 
 The phase, draft, and previous active tools are recorded in the host's session history. Reloading, resuming, or switching branches restores the state for that branch without replaying an execution request. Use `cancel`, **Execute**, or **Keep prompt only** to leave coaching. No draft file is created in your project.
 
 This boundary covers the host tool and direct-command entry points while the extension is loaded. It is not an operating-system sandbox for other processes or other extensions' own code. A tool override is excluded from the read-only allowlist. Install trusted extensions and avoid changing host modes during coaching.
-
-## Coaching principles
-
-The shared [coaching rules](coaching.md) apply five practical principles:
-
-1. Keep relevant context and useful failed attempts; remove repetition.
-2. Make the task and important constraints easy to find.
-3. Distinguish established facts, hypotheses, and missing evidence.
-4. Turn vague requests into concrete requirements or examples.
-5. Define scope, deliverables, and acceptance criteria without enlarging the task.
-
-The focus adapts to implementation, debugging, review, or design. Questions are driven by missing information, not a mandatory form.
 
 ## Development
 

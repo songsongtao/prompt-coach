@@ -1,9 +1,15 @@
 # Changelog
 
+## 0.1.2 — 2026-09-30
+
+- Explain why key constraints stay close to the task and completion criteria.
+- Shorten the prompt-quality guidance and remove duplicated README sections.
+- Keep the bilingual documentation focused on user-facing behavior.
+
 ## 0.1.1 — 2026-09-30
 
 - Explain the value of prompt coaching for debugging, implementation, review, and design tasks.
-- Document the five principles from `提示词工程.md` and how the shared coaching rules apply them.
+- Document the five prompt-quality principles and how the shared coaching rules apply them.
 - Keep the English and Simplified Chinese README descriptions in sync.
 
 ## 0.1.0 — 2026-09-30
