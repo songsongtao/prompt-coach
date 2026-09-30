@@ -1,0 +1,8 @@
+node_modules/
+.artifacts/
+*.tgz
+*.log
+.env
+.env.*
+.npmrc
+/提示词工程.md

@@ -1,0 +1,21 @@
+{
+  "name": "prompt-coach",
+  "version": "0.1.0",
+  "description": "Turn rough coding requests into clear prompts in Pi and OMP, with read-only coaching and explicit execution approval.",
+  "type": "module",
+  "author": "songsongtao",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/songsongtao/prompt-coach.git"
+  },
+  "homepage": "https://github.com/songsongtao/prompt-coach#readme",
+  "bugs": { "url": "https://github.com/songsongtao/prompt-coach/issues" },
+  "keywords": ["pi-package", "omp", "prompt", "coaching", "coding-agent"],
+  "files": ["extensions/", "coaching.md", "README.md", "README.zh-CN.md", "LICENSE", "CHANGELOG.md"],
+  "pi": { "extensions": ["./extensions/prompt-coach.js"] },
+  "omp": { "extensions": ["./extensions/prompt-coach.js"] },
+  "peerDependencies": { "typebox": "*" },
+  "devDependencies": { "typebox": "1.3.27" },
+  "scripts": { "test": "node --test", "check": "node --check extensions/prompt-coach.js" }
+}
