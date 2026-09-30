@@ -88,6 +88,21 @@ The focused tests cover blocked writes, explicit execution approval, and session
 
 Official references: [OMP plugins](https://omp.sh/docs/plugins), [Pi packages](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/packages.md), and the [Pi package directory](https://pi.dev/packages). The npm `pi-package` keyword enables directory discovery; publishing on npm and appearing in the directory are separate steps.
 
+## Automated release
+
+The repository includes a GitHub Actions workflow at `.github/workflows/npm-publish.yml`. It runs after a GitHub Release is **published**, checks that the release tag matches `package.json`, runs the checks and tests, previews the package contents, and publishes `@sonsong/prompt-coach` to npm.
+
+Before the first automated release, configure npm Trusted Publishing for this package with GitHub Actions, repository `songsongtao/prompt-coach`, and workflow filename `npm-publish.yml`. The workflow uses OIDC and stores no npm token in the repository.
+
+For each release:
+
+1. Update `package.json`, `package-lock.json`, and `CHANGELOG.md` with a new version.
+2. Run `npm run check`, `npm test`, and `npm pack --dry-run`.
+3. Commit the changes, create and push an annotated `v<version>` tag.
+4. Create and publish a GitHub Release for that tag.
+
+The workflow publishes only a version that matches the release tag. A published npm version cannot be reused. Pi catalog indexing and npm download statistics update separately.
+
 ## License
 
 [MIT](LICENSE) © 2026 songsongtao

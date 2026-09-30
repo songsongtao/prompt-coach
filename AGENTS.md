@@ -11,8 +11,9 @@
 - Keep the shared extension and `coaching.md` as the source of behavior. When user-facing behavior or documentation changes, update `README.md` and `README.zh-CN.md` together.
 - For a release, update `package.json`, `package-lock.json`, and `CHANGELOG.md` with the next version. Keep the package name, Pi/OMP manifests, and `files` allowlist consistent.
 - Before committing, run `git diff --check`, `npm run check`, `npm test`, and `npm pack --dry-run`. Confirm the tarball contains only intended public files.
-- Commit the reviewed changes, create an annotated `v<version>` tag, and push the branch and tag to `origin`.
-- Publish the scoped package through the public npm registry with browser authentication when required:
+- Commit the reviewed changes, create an annotated `v<version>` tag, and push the branch and tag to `origin`. For normal releases, then publish a GitHub Release for that tag; `.github/workflows/npm-publish.yml` runs the checks and publishes to npm through Trusted Publishing.
+- Configure npm Trusted Publishing once for the exact repository and workflow filename before relying on automatic publishing. The workflow uses OIDC and does not need an npm token secret.
+- For a deliberate manual recovery outside the workflow, publish the scoped package through the public npm registry with browser authentication when required:
 
   ```bash
   npm publish --access public --auth-type=web --registry=https://registry.npmjs.org/

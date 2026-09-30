@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Add a GitHub Actions workflow for OIDC-authenticated npm publishing after a published GitHub Release.
+- Document the one-time Trusted Publishing setup and the release sequence in both README files.
+
 ## 0.1.2 — 2026-09-30
 
 - Explain why key constraints stay close to the task and completion criteria.

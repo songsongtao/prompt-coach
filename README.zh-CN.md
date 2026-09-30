@@ -88,6 +88,21 @@ npm pack --dry-run
 
 官方参考：[OMP 插件文档](https://omp.sh/docs/plugins)、[Pi 包文档](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/packages.md)、[Pi 包目录](https://pi.dev/packages)。npm 的 `pi-package` 关键词用于目录发现；npm 发布成功与目录实际收录是两个独立状态。
 
+## 自动发布
+
+仓库包含 `.github/workflows/npm-publish.yml`。当 GitHub Release **正式发布**后，Actions 会检查 Release 标签是否与 `package.json` 版本一致，运行检查和测试，预览打包内容，然后将 `@sonsong/prompt-coach` 发布到 npm。
+
+首次使用前，需要在 npm 包设置中为 GitHub Actions 配置 Trusted Publishing，仓库填写 `songsongtao/prompt-coach`，workflow 文件名填写 `npm-publish.yml`。workflow 使用 OIDC，不把 npm Token 保存到仓库中。
+
+每次发布按以下步骤操作：
+
+1. 更新 `package.json`、`package-lock.json` 和 `CHANGELOG.md` 的版本号。
+2. 运行 `npm run check`、`npm test` 和 `npm pack --dry-run`。
+3. 提交修改，创建并推送带注释的 `v<版本号>` 标签。
+4. 为该标签创建并正式发布 GitHub Release。
+
+workflow 只会发布与 Release 标签一致的版本；已经发布到 npm 的版本不能重复使用。Pi 目录收录和 npm 下载统计会独立同步。
+
 ## 许可证
 
 [MIT](LICENSE) © 2026 songsongtao
