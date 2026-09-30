@@ -1,6 +1,6 @@
 {
   "name": "@sonsong/prompt-coach",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Turn rough coding requests into clear prompts in Pi and OMP, with read-only coaching and explicit execution approval.",
   "type": "module",
   "author": "songsongtao",

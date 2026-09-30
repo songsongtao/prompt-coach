@@ -28,6 +28,12 @@ The coach reuses the conversation and can read or search relevant project files.
 
 For example, a vague debugging request becomes a prompt with the reproduction steps, expected and actual behavior, evidence, failed attempts, scope, and acceptance criteria. A short, complete request stays short.
 
+## Why it matters
+
+A coding agent can only act on what the current context makes clear. When a request is vague, the model has to guess the goal, the relevant evidence, the allowed scope, and what counts as finished. Those guesses lead to repeated questions, wrong files, broad changes, and results that are difficult to verify.
+
+`prompt-coach` turns that rough request into a compact handoff before any task starts. It makes the target, evidence, constraints, and finish line visible; keeps useful failed attempts; exposes unknowns before they become assumptions; and lets you approve the exact prompt that will be submitted. The coaching phase stays read-only, so improving the prompt cannot change project files. This is especially useful for debugging, implementation, review, and design tasks that carry several constraints across a conversation. Simple, complete requests remain short.
+
 | Command | Behavior |
 | --- | --- |
 | `/prompt-coach <idea or prompt>` | Start coaching, or revise the current request. |
@@ -35,6 +41,18 @@ For example, a vague debugging request becomes a prompt with the reproduction st
 | `/prompt-coach cancel` | End coaching and restore the previous tools without starting a task. |
 
 Questions, improvement notes, and the review dialog follow the user's language: English or Simplified Chinese, with English as the fallback. Ask “continue in Chinese” or “请切换到英文” to switch. You can also request a specific language for the final prompt.
+
+## Principles from `提示词工程.md`
+
+The shared coaching rules turn the five principles in the project notes into a repeatable workflow:
+
+1. **Less but precise** — keep high-relevance context and useful failed attempts; remove repetition and unrelated noise.
+2. **Put priorities where they are easy to find** — organize the prompt as context, evidence, task, constraints, and output, then keep the most important limits close to the task and finish line.
+3. **Facts before judgment** — separate confirmed facts, hypotheses, and missing evidence before suggesting a cause or solution.
+4. **Make requirements concrete** — replace vague requests such as “analyze carefully” with files, checks, examples, boundaries, and an expected result.
+5. **Define done** — state the scope, deliverables, and acceptance criteria so the task can finish without silently expanding.
+
+These practices apply the notes' model concepts in a usable form: relevant context guides attention, clear placement keeps priorities visible, facts shape a reliable working state, concrete examples reduce semantic ambiguity, and explicit constraints narrow the possible output. The coach asks only for missing information instead of forcing every request through a fixed template.
 
 ## Review and execute
 

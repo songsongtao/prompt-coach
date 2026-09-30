@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1 — 2026-09-30
+
+- Explain the value of prompt coaching for debugging, implementation, review, and design tasks.
+- Document the five principles from `提示词工程.md` and how the shared coaching rules apply them.
+- Keep the English and Simplified Chinese README descriptions in sync.
+
 ## 0.1.0 — 2026-09-30
 
 - Publish as `@sonsong/prompt-coach` on npm.
